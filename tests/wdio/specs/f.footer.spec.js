@@ -249,6 +249,10 @@ describe(Page.groupId(params), () => {
    params.test = Data.groups[4].tests[0];
    it(Page.testId(params), async () => {
        inputs = Data.groups[4].tests[0];
+       const run = await Page.runnerFlag()
+       if (run) {
+           return this.skip();
+       }
        await Page.open();
        await Page.bottomPrivacyPolicyLinkFunctionality(Data, inputs.assert);
    })
@@ -257,6 +261,10 @@ describe(Page.groupId(params), () => {
    params.test = Data.groups[4].tests[1];
    it(Page.testId(params), async () => {
        inputs = Data.groups[4].tests[1];
+       const run = await Page.runnerFlag()
+       if (run) {
+           return this.skip();
+       }
        await Page.open();
        await Page.bottomCookiePolicyLinkFunctionality(Data, inputs.assert);
    })

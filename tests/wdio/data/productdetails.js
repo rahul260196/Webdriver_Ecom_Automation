@@ -46,7 +46,8 @@ export default class ProductDetails extends Page{
             success_modal_trolley_btn_xpath: '(//button[contains(.,"Ga naar winkelwagen")])[2]',
             success_modal_close_btn_testid:'trolley-add-ons-recommendations-close-button',
             select_branch_text_endtestid: '-branch-stock',
-            product_code_starttestid: 'product-code'
+            product_code_starttestid: 'product-code',
+            product_code_xpath: '//span[@data-testid="true-price"]/../.././../../../../../../../div/div/p/span'
         }
         this.value = {
             product_collection_hoofddorp: '11794',
