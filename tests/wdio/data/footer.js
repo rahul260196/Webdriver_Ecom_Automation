@@ -44,6 +44,29 @@ export default class Footer extends Page {
             sitemap_heading_text: 'h1*=Sitemap',
             news_heading_text: 'h2*=Blijf op de hoogte van het laatste nieuws',
             branches_page_heading_text_testid: 'our-branches-page-title',
+            mob_helpandcontact_testid: 'mobile-footer-navigation-tab-0',
+            mob_faq_link_xpath: '//a[@href="/content/faq" and @data-testid="mobile-footer-link-0"]',
+            mob_contact_link_xpath: '//a[@href="/contact" and @data-testid="mobile-footer-link-1"]',
+            mob_payment_link_xpath: '//a[@href="/content/payment" and @data-testid="mobile-footer-link-2"]',
+            mob_delivery_link_xpath: '//a[@href="/content/delivery" and @data-testid="mobile-footer-link-3"]',
+            mob_clickandcollect_link_xpath: '//a[@href="/content/clickandcollect" and @data-testid="mobile-footer-link-4"]',
+            mob_return_link_xpath: '//a[@href="/content/returnsandexchanges" and @data-testid="mobile-footer-link-5"]',
+            mob_guarantee_link_xpath: '//a[@href="/guarantee" and @data-testid="mobile-footer-link-6"]',
+            mob_abouttoolstation_testid: 'mobile-footer-navigation-tab-1',
+            mob_about_link_xpath: '//a[@href="/content/aboutus" and @data-testid="mobile-footer-link-0"]',
+            mob_procard_link_xpath: '//a[@href="/content/pro" and @data-testid="mobile-footer-link-1"]',
+            mob_toolapp_link_xpath: '//a[@href="/content/toolstation-app" and @data-testid="mobile-footer-link-2"]',
+            mob_news_link_xpath: '//a[@href="/newsletter" and @data-testid="mobile-footer-link-3"]',
+            mob_branches_link_xpath: '//a[@href="/branches" and @data-testid="mobile-footer-link-4"]',
+            mob_jobs_link_xpath: '//a[@href="/content/jobs" and @data-testid="mobile-footer-link-5"]',
+            mob_termsandcontidition_testid: 'mobile-footer-navigation-tab-2',
+            mob_terms_link_xpath: '//a[@href="/content/terms" and @data-testid="mobile-footer-link-0"]',
+            mob_privacy_link_xpath: '//a[@href="/content/privacy" and @data-testid="mobile-footer-link-1"]',
+            mob_cookies_link_xpath: '//a[@href="/content/cookies" and @data-testid="mobile-footer-link-2"]',
+            mob_reviews_link_xpath: '//a[@href="/content/reviewguidelines" and @data-testid="mobile-footer-link-3"]',
+            mob_wee_link_xpath: '//a[@href="/weee" and @data-testid="mobile-footer-link-4"]',
+            mob_slavery_link_xpath: '//a[@href="/modern-slavery-statement" and @data-testid="mobile-footer-link-5"]',
+            mob_copy_link_xpath: '//a[@href="/copyright" and @data-testid="mobile-footer-link-6"]',
         }
         this.value = {
             prod_url: 'https://www.toolstation.nl',
@@ -326,5 +349,4 @@ export default class Footer extends Page {
             }
         ]
     }
- }
- 
+}

@@ -5,7 +5,7 @@ class Env {
     constructor() {
         this.params = {
             debug: false,
-            is_human: true,
+            is_human: false,
             is_human_pause: 1000,
             small_pause: 2000,
             medium_pause: 5000,
@@ -13,7 +13,7 @@ class Env {
             env: null,
             current_os: null,
             log_level: 'error',
-            base_url: 'https://ts-eu24-develop.ventrox.com',
+            base_url: 'https://ts-feature-plugin-and-throw-err.ventrox.com',
             disable_protection_string: "?builder.preview=true",
             version: null,
             chrome_driver_path: chromedriver.path,
@@ -36,42 +36,46 @@ class Env {
                     'appium:autoGrantPermissions': true,
                     'appium:noReset': true,
                     'appium:automationName': 'UIAutomator2',
-                    'appium:udid': '192.168.1.4',
+                    'appium:udid': '192.168.4.1:42903',
                 },
             ],
             services: []
+            
         };
- 
- 
-          this.detectOS();
- 
- 
+        console.log(" Debug is ", this.params.debug);
+        console.log(" human is ", this.params.is_human);
+        console.log(" This is capabilities ", this.params.capabilities[0] );
+        console.log(" This is current os before set ", this.params.current_os)
+        this.detectOS();
+
+        console.log(" This is current os after set ", this.params.current_os)
+        
+
         if (process.env.NODE_WDIO_IS_HUMAN) {
             this.params.is_human = true;
         }
         if (process.env.NODE_WDIO_DEBUG) {
             this.params.debug = true;
         }
- 
- 
+   
         this.setCapabilities()
         this.setServices();
- 
- 
+
+
         if (this.params.debug === true) {
             this.params.log_level = 'debug'
         }
     }
     //-------------------------------------------------
     setEnvironmentParams() {
- 
- 
+
+
         if (process.env.NODE_WDIO_BASE_URL) {
             this.params.base_url = process.env.NODE_WDIO_BASE_URL
             return this.params;
         }
- 
- 
+
+
         switch (process.env.NODE_WDIO_APP_ENV) {
             case 'develop':
                 this.params.base_url = 'https://ts-eu24-develop.ventrox.com'
@@ -91,21 +95,21 @@ class Env {
             default:
                 break;
         }
- 
- 
+
+
         return this.params;
     }
     //-------------------------------------------------
     setCapabilities() {
- 
- 
+
+
         const osToUse = process.env.NODE_WDIO_OS || this.params.current_os;
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
         switch (osToUse) {
             case 'mac':
                 this.params.capabilities = [
@@ -156,10 +160,11 @@ class Env {
                             ]
                         },
                         "appium:deviceName": "SM-M515F",
-                        'appium:autoGrantPermissions': true, 
-                        'appium:noReset': true, 
+                        'appium:autoGrantPermissions': true,
+                        'appium:noReset': true,
                         'appium:automationName': 'UIAutomator2',
-                        'appium:udid': '192.168.1.4:33351',
+                       //  'appium:udid': '192.168.1.4:38883',
+                        'appium:udid': 'emulator-5554',
                     },
                 ]
                 break;
@@ -170,6 +175,17 @@ class Env {
                         "appium:automationName": "Chromium",
                         browserName: 'chrome',
                         acceptInsecureCerts: true,
+                        'goog:chromeOptions': {
+                            args: [
+                                '--disable-notifications',
+                                '--disable-geolocation',
+                                '--disable-save-password-bubble',
+                                '--disable-features=TranslateUI',
+                                '--disable-infobars',
+                                '--lang=nl',
+                                '--disable-gpu'
+                            ]
+                        }
                     }
                 ]
                 break;
@@ -205,7 +221,7 @@ class Env {
             this.params.services = [[
                 'appium',
                 {
-                    args:{
+                    args: {
                         relaxedSecurity: true,
                         sessionOverride: true,
                         debugLogSpacing: true,
@@ -216,16 +232,16 @@ class Env {
             ]];
         } else {
             this.params.services = [['chromedriver', {
-                        chromedriverCustomPath: chromedriver.path
-                    }]];
+                chromedriverCustomPath: chromedriver.path
+            }]];
         }
     }
     //-------------------------------------------------
     getCapabilities() {
         let capabilities = this.params.capabilities;
         if (this.params.is_human === false) {
- 
- 
+
+
             for (let i in capabilities) {
                 switch (capabilities[i].browserName) {
                     case 'chrome':
@@ -250,24 +266,24 @@ class Env {
     getParams() {
         this.params = this.setEnvironmentParams();
         this.params.capabilities = this.getCapabilities();
- 
- 
+
+
         console.log('params-->', this.params);
- 
- 
+
+
         return this.params;
     }
     //-------------------------------------------------
     detectOS() {
         const platform = os.platform();
         const release = os.release();
-        
+        console.log(" This is env passed ",process.env.NODE_WDIO_EMULATOR)
         if (process.env.NODE_WDIO_EMULATOR) {
             this.params.current_os = 'android';
             console.log(`Detected OS: ${this.params.current_os} (Emulator)`);
             return;
         }
- 
+
         switch (platform) {
             case 'darwin':
                 this.params.current_os = 'mac';
@@ -292,7 +308,6 @@ class Env {
         console.log(`Detected OS: ${this.params.current_os}`);
     }
     //-------------------------------------------------
- }
- export default Env;
+}
+export default Env;
 
- 

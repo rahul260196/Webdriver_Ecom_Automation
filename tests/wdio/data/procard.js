@@ -51,7 +51,12 @@ export default class Procard extends Page{
            header_procard_link_testid: 'header-link-content/pro',
            request_procard_cta_xpath: '(//*[@href="/content/pro-kaart-keuze"])[2]',
            withoutcredit_card_image_testid: 'my-account-pro-card-user-card-image',
-           withoutcredit_user_name_on_card_xpath: '(//*[@data-testid="my-account-pro-card-user-card-name"])[2]'
+           withoutcredit_user_name_on_card_xpath: '(//*[@data-testid="my-account-pro-card-user-card-name"])[2]',
+           mob_accept_terms_xpath: '//div[@data-testid="proCardTermsModal-card-container"]/div/div/div/button',
+           mob_without_credit_button_xpath: '//button[contains(.,"without credit")]',
+           mob_with_cred_button_xpath: '//button[contains(.,"with credit")]',
+           mob_request_btn_xpath: '//button[contains(.,"Vraag")]',
+           mob_account_pro_kart_xpath: '//a[@href = "/account/pro-card"]',
        }
        this.value = {
            kvk_number: 17078445,
@@ -66,6 +71,8 @@ export default class Procard extends Page{
            with_credit_application_start_end_url: '/pro-card/application',
            without_credit_application_start_end_url: '/pro-card/application/zero-account',
            prod_url: 'https://www.toolstation.nl',
+           usernametext: 'Abhijeet Ghosh',
+
        }
        this.params.page = {
            id: 'PC',

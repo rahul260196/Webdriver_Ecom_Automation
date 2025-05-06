@@ -22,7 +22,7 @@ export default class Signin extends Page{
             myaccount_heading_testid: 'myaccount-heading-text',
             branch_locator_btn_text: 'span=Select your nearest branch',
             release_notes_skip_button_text: 'button*= Skip',
-            header_myaccount_btn_testid: 'header_header-link-logout',
+            header_myaccount_btn_testid: 'header-auth_header-link-logout',
             create_account_link_testid: 'signin-signup-link',
             signin_header_testid: 'signin-heading-text',
             mobile_signout_btn_text: 'span*=Uitloggen'

@@ -68,7 +68,7 @@ export default class HeaderPage extends Page {
        await browser.pause(this.medium_pause);
        await Sl.testid(data.element.save_list_btn_testid).click();
        await helper.userSignin(data.value.email, data.value.cred_secure);
-       await browser.pause(this.small_pause);
+       await browser.pause(this.medium_pause);
        await Sl.testid(data.element.save_list_btn_testid).click();
        await asserts.pageUrl(assert.url);
        await expect(Sl.testid(savelist.element.savelist_title_testid)).toBeDisplayed();
@@ -307,7 +307,7 @@ export default class HeaderPage extends Page {
        await this.search(Sl.testid(data.element.search_bar_testid), data.value.product_code, Sl.testid(data.element.search_productcode_testid));
        await browser.pause(this.small_pause);
        await asserts.pageUrl(assert.url);
-       const productCodeEle = await Sl.starttestid(productdetail.element.product_code_starttestid);
+       const productCodeEle = await Sl.$(productdetail.element.product_code_xpath);
        const productCodeText = await productCodeEle.getText();
        const productCode = productCodeText.split(":")[1].trim();
        expect(productCode).toBe(data.value.product_code);
@@ -328,7 +328,7 @@ export default class HeaderPage extends Page {
        await this.search(Sl.testid(data.element.search_bar_testid), data.value.product_name, Sl.$(data.element.search_productname_xpath));
        await browser.pause(this.small_pause);
        await asserts.pageUrl(assert.url);
-       const productCodeEle = await Sl.starttestid(productdetail.element.product_code_starttestid);
+       const productCodeEle = await Sl.$(productdetail.element.product_code_xpath);
        const productCodeText = await productCodeEle.getText();
        const productCode = productCodeText.split(":")[1].trim();
        expect(productCode).toBe(data.value.product_code);

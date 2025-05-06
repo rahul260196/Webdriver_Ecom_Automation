@@ -67,11 +67,27 @@ export default class Account extends Page{
             mobile_signout_btn_text: 'span*=Uitloggen',
             savelist_title_testid: 'saved-list-title',
             outofstock_title_testid: 'out-of-stock-notification-mobile-title',
+            mobile_dev_savelist_link_xpath: '//p[contains(.,"Lijst opslaan")]',
+            mobile_dev_msgcenter_link_xpath: '//p[contains(.,"Berichtencentrum")]',
+            mobile_dev_signout_btn_xpath: '//span[contains(.,"Afmelden")]',
+            profile_heading_testid: 'account-profile-title',
+            order_heading_testid: 'my-account-orders-page-heading',
+            orderagain_heading_testid: 'my-account-order-again-heading',
+            savelist_heading_testid: 'account-save-list-link-text',
+            mobile_savelist_heading_develop_testid: 'saved-list-title', 
+            stocknotify_heading_testid: 'out-of-stock-notification-title',
+            mobile_stocknotify_heading_testid: 'out-of-stock-notification-mobile-title', 
+            msgcenter_heading_testid: 'message-center-title',
+            general_heading_testid: 'heading-primary',
+            procard_heading_testid: 'my-account-pro-card-header', 
+            mobile_procard_heading_testid: 'my-account-pro-card-title', 
+            address_heading_testid: 'my-account-address-heading-desktop',
+            defaultbranch_heading_testid: 'account-default-branch-heading-desktop',
+            mobile_dflbrnch_heading_testid: 'account-default-branch-heading-mobile',
+            accountpref_heading_testid: 'account-preferences-title',
+            faq_heading_xpath: '//p[@datatestid="heading-primary"]',
  
- 
-            
-           
-           
+
  
  
               
@@ -163,7 +179,10 @@ export default class Account extends Page{
                         count: 2.2,
                         name: 'Verify if the "Save List" link is visible in account page',
                         expect: 'The "Save List" link should be visible in the account page',
-                        assert: 'Kluslijst'
+                        assert:{
+                            prod: 'Kluslijst',
+                            mobile_dev: 'Lijst opslaan'
+                        }
                     },
                     {
                         count: 2.3,
@@ -182,7 +201,8 @@ export default class Account extends Page{
                         expect: 'The "Message center" link should be visible in the account page',
                         assert:{
                             prod: 'Berichten van Toolstation',
-                            other: 'Bericht Centrum'
+                            other: 'Bericht Centrum',
+                            mobile_dev: 'Berichtencentrum'
                         }
                     },
                     {
@@ -206,7 +226,7 @@ export default class Account extends Page{
                         expect: 'The "Default Branch/Location" link should be visible in the account page',
                         assert: {
                             prod: 'Favoriete vestiging',
-                            other: 'Standaardfiliaal'
+                            other: 'Standaardfiliaal',
                         }
                     },
                     {
@@ -236,7 +256,11 @@ export default class Account extends Page{
                     {
                         count: 3.2,
                         name: 'Verify if the "Sign out" link is visible in account page',
-                        expect: 'The "Sign out" link should be visible in the account page'
+                        expect: 'The "Sign out" link should be visible in the account page',
+                        assert:{
+                            prod: 'Uitloggen',
+                            mobile_dev: 'Afmelden',
+                        } 
                     },
                 ]
             },
@@ -248,7 +272,10 @@ export default class Account extends Page{
                         count: 1.1,
                         name: 'Verify the functionality of the "Profile" link added in account page',
                         expect: 'The "Profile" link should be functional and it should navigate to the "Profile" page',
-                        assert: this.base_url+'/account/profile'
+                        assert: {
+                            url: this.base_url+'/account/profile',
+                            heading: 'Profiel',
+                        }
                     },
                     {
                         count: 1.2,
@@ -268,6 +295,7 @@ export default class Account extends Page{
                         assert: {
                            url: this.base_url+'/account/order-again',
                            heading: 'Opnieuw bestellen',
+                           heading_develop: 'Bestel opnieuw',
                         }
                     },
                     {
@@ -287,38 +315,59 @@ export default class Account extends Page{
                         expect: 'The "Stock Notification" link should be functional and it should navigate to the "stock notification" page',
                         assert:{
                             url: this.base_url+'/account/stock-notification',
-                            heading: 'Melding niet op voorraad',
+                            heading_develop: 'Melding niet op voorraad',
+                            heading_other: 'Voorraadmelding'
                         }
                     },
                     {
                         count: 1.6,
                         name: 'Verify the functionality of the "Message center" link added in account page',
                         expect: 'The "Message center" link should be functional and it should navigate to the "Message center" page',
-                        assert: this.base_url+'/account/message'
+                        assert:{
+                            url: this.base_url+'/account/message',
+                            heading_dev: 'MessageCenter',
+                            heading_mobile: 'Message Center',
+                            heading_prod: 'Berichten van Toolstation',
+
+                        } 
                     },
                     {
                         count: 1.7,
                         name: 'Verify the functionality of the "PRO Card" link added in account page',
                         expect: 'The "PRO Card" link should be functional and it should navigate to the "PRO Card" page',
-                        assert: this.base_url+'/account/pro-card'
+                        assert:{
+                            url: this.base_url+'/account/pro-card',
+                            heading: 'PRO-kaart',
+                            heading_dev: 'PRO-Kaart'
+                        } 
                     },
                     {
                         count: 1.8,
                         name: 'Verify the functionality of the "Addresses" link added in account page',
                         expect: 'The "Addresses" link should be functional and it should navigate to the "addresses" page',
-                        assert: this.base_url+'/account/addresses'
+                        assert:{
+                            url: this.base_url+'/account/addresses',
+                            heading: 'Opgeslagen adressen' 
+                        } 
                     },
                     {
                         count: 1.9,
                         name: 'Verify the functionality of the "Default Branch/Location" link added in account page',
                         expect: 'The "Default Branch/Location" link should be functional and it should navigate to the "branch" page',
-                        assert: this.base_url+'/account/branch'
+                        assert:{
+                            url: this.base_url+'/account/branch',
+                            heading: 'Favoriete vestiging'
+                        }
                     },
                     {
                         count: 2.1,
                         name: 'Verify the functionality of the "Account Preferences" link added in account page',
                         expect: 'The "Account Preferences" link should be functional and it should navigate to the "preferences" page',
-                        assert: this.base_url+'/account/preferences'
+                        assert:{ 
+                            url: this.base_url+'/account/preferences', 
+                            heading: 'Accountvoorkeuren' 
+
+                        }
                     },
                     {
                         count: 2.2,
@@ -326,7 +375,7 @@ export default class Account extends Page{
                         expect: 'The "FAQ" link should be functional and it should navigate to the "faq" page',
                         assert: {
                             url: this.base_url+'/content/faq',
-                            title: 'Veelgestelde vragen | Toolstation.nl'
+                            title: 'Veelgestelde vragen'
                         }
                     },
                     {
@@ -335,7 +384,7 @@ export default class Account extends Page{
                         expect: 'The "About Us" link should be functional and it should navigate to the "about us" page',
                         assert: {
                             url: this.base_url+'/content/aboutus',
-                            title: 'Over ons'
+                            title: 'Over Toolstation'
                         }
                     },
                     {
